@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#723AD5"
+    android:background="@color/pink"
     tools:context=".ui.game.GameActivity">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/actionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:background="#673AB7"
+        android:background="@color/pink"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,9 +25,11 @@
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
                 android:background="?android:selectableItemBackgroundBorderless"
-                android:padding="8dp"
+                android:clickable="true"
+                android:padding="12dp"
                 android:src="@drawable/ic_back"
                 android:tint="@color/white" />
 
@@ -47,15 +49,16 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:elevation="8dp"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/actionBar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="16dp">
+        app:layout_constraintTop_toBottomOf="@id/actionBar">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageOne"
@@ -63,10 +66,10 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/imageThree"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="@id/imageTwo"
-            app:layout_constraintBottom_toTopOf="@id/imageThree"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -75,10 +78,10 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:background="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/imageFour"
             app:layout_constraintLeft_toRightOf="@id/imageOne"
-            app:layout_constraintBottom_toTopOf="@id/imageFour"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -87,10 +90,10 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:background="@color/white"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageOne"
-            app:layout_constraintRight_toLeftOf="@id/imageFour"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/imageFour"
+            app:layout_constraintTop_toBottomOf="@id/imageOne" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -99,10 +102,10 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:background="@color/white"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageThree"
-            app:layout_constraintTop_toBottomOf="@id/imageTwo"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageTwo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,92 +114,93 @@
         android:id="@+id/answerLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="32dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/variantLine1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/variantLine1">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:textColor="@color/black"
-            tools:text="A"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="44dp"
             android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
             android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            android:background="@drawable/bg_variant"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="A" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -204,92 +208,72 @@
         android:id="@+id/variantLine1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@id/variantLine2"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/variantLine2">
+        app:layout_constraintRight_toRightOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
             android:textColor="@color/black"
-            android:gravity="center"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -297,93 +281,74 @@
         android:id="@+id/variantLine2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintRight_toRightOf="parent">
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/bg_variant"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
+            tools:text="A" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            tools:text="A"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="1dp"
-            android:background="@drawable/bg_variant"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
