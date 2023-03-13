@@ -64,7 +64,12 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                     it.isClickable = false
                     it.text = ""
                     presenter.clickVariantButton(st.toString())
-                    if (ans.length == count) presenter.checkAnswer(checkAnswer())
+
+                    if (ans.length == count) {
+                        Log.d("AAA", ans)
+                        Log.d("AAA", checkAnswer())
+                        presenter.checkAnswer(checkAnswer())
+                    }
                 }
             }
         }
@@ -88,7 +93,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     private fun checkAnswer(): String {
         var str = ""
-        for (i in 0..ans.length)
+        for (i in answerButtons.indices)
             str += answerButtons[i].text
 
         return str
@@ -104,10 +109,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews[2].setImageResource(data.image3ResID)
         imageViews[3].setImageResource(data.image4ResID)
 
-        resizeAnswerButtons(data.answer)
-        describeVariant(data.variant)
         ans = data.answer
         count = 0
+        resizeAnswerButtons(data.answer)
+        describeVariant(data.variant)
     }
 
     override fun showAnswer(value: String, index: Int) {
@@ -136,8 +141,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
             answerButtons[i].isClickable = false
         }
 
-        for (i in answer.length until answerButtons.size)
+        for (i in answer.length until answerButtons.size){
             answerButtons[i].visibility = View.GONE
+            answerButtons[i].text = ""
+        }
     }
 
     private fun describeVariant(variant: String) {

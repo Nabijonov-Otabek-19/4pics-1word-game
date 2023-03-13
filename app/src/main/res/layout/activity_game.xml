@@ -109,7 +109,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/answerLine"
         android:layout_width="match_parent"
