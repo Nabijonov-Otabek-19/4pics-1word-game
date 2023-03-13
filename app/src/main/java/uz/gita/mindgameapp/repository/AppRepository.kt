@@ -107,5 +107,17 @@ class AppRepository private constructor() {
         list_animals.add(QuestionData(
             R.drawable.owl1, R.drawable.owl2, R.drawable.owl3,
             R.drawable.owl4, "KEHOBSWRNLAE", "OWL"))
+
+        list_animals.add(QuestionData(
+            R.drawable.panda1, R.drawable.panda2, R.drawable.panda3,
+            R.drawable.panda4, "POILANGJNWDA", "PANDA"))
+
+        list_animals.add(QuestionData(
+            R.drawable.monkey1, R.drawable.monkey2, R.drawable.monkey3,
+            R.drawable.monkey4, "KLMSWONRKEYQ", "MONKEY"))
+
+        list_animals.add(QuestionData(
+            R.drawable.goose1, R.drawable.goose2, R.drawable.goose3,
+            R.drawable.goose4, "IRTUESGOVQWO", "GOOSE"))
     }
 }
