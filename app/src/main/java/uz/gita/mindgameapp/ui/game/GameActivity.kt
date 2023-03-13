@@ -66,8 +66,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                     presenter.clickVariantButton(st.toString())
 
                     if (ans.length == count) {
-                        Log.d("AAA", ans)
-                        Log.d("AAA", checkAnswer())
                         presenter.checkAnswer(checkAnswer())
                     }
                 }

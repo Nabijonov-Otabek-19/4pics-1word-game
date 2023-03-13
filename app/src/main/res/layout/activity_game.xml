@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@drawable/bg_frame"
     tools:context=".ui.game.GameActivity">
 
 
@@ -12,7 +12,6 @@
         android:id="@+id/actionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:background="@color/pink"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,7 +52,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_margin="14dp"
         android:elevation="8dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -64,8 +63,10 @@
             android:id="@+id/imageOne"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
-            android:background="@color/white"
+            android:layout_margin="1dp"
+            android:background="@drawable/frame6"
+            android:padding="14dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@id/imageThree"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/imageTwo"
@@ -76,8 +77,10 @@
             android:id="@+id/imageTwo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
-            android:background="@color/white"
+            android:layout_margin="1dp"
+            android:background="@drawable/frame6"
+            android:padding="14dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@id/imageFour"
             app:layout_constraintLeft_toRightOf="@id/imageOne"
             app:layout_constraintRight_toRightOf="parent"
@@ -88,8 +91,10 @@
             android:id="@+id/imageThree"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
-            android:background="@color/white"
+            android:layout_margin="1dp"
+            android:background="@drawable/frame6"
+            android:padding="14dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/imageFour"
@@ -100,8 +105,10 @@
             android:id="@+id/imageFour"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
-            android:background="@color/white"
+            android:layout_margin="1dp"
+            android:background="@drawable/frame6"
+            android:padding="14dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageThree"
             app:layout_constraintRight_toRightOf="parent"
@@ -129,6 +136,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -139,6 +147,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -149,6 +158,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -159,6 +169,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -169,6 +180,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -179,6 +191,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -189,6 +202,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -199,6 +213,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -222,6 +237,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -232,6 +248,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -242,6 +259,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -252,6 +270,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -262,6 +281,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -272,6 +292,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -296,6 +317,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -306,6 +328,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -316,6 +339,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -326,6 +350,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -336,6 +361,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -346,6 +372,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="A" />
 
 
