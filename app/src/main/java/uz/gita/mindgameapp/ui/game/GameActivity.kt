@@ -2,15 +2,15 @@ package uz.gita.mindgameapp.ui.game
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
-import uz.gita.mindgameapp.model.QuestionData
+import androidx.core.content.ContextCompat
 import uz.gita.mindgameapp.R
+import uz.gita.mindgameapp.model.QuestionData
 import uz.gita.mindgameapp.ui.result.ResultActivity
 
 class GameActivity : AppCompatActivity(), GameContract.View {
@@ -62,7 +62,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                     count++
                     val st = (it as AppCompatTextView).text
                     it.isClickable = false
-                    it.text = ""
+                    it.setTextColor(getColor(R.color.gray))
                     presenter.clickVariantButton(st.toString())
 
                     if (ans.length == count) {
@@ -75,16 +75,22 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         answerButtons.forEach {
             it.setOnClickListener {
                 val st = (it as AppCompatTextView).text
-                for (i in 0..variantButtons.size) {
-                    if (variantButtons[i].text.isEmpty()) {
-                        variantButtons[i].text = st
-                        variantButtons[i].isClickable = true
-                        break
-                    }
-                }
+                returnAnswer(st.toString())
+
                 count--
                 it.text = ""
                 it.isClickable = false
+                it.background = ContextCompat.getDrawable(this, R.drawable.bg_answer_empty)
+            }
+        }
+    }
+
+    private fun returnAnswer(st: String) {
+        for (i in 0..variantButtons.size) {
+            if (variantButtons[i].text == st && variantButtons[i].currentTextColor == getColor(R.color.gray)) {
+                variantButtons[i].setTextColor(getColor(R.color.white))
+                variantButtons[i].isClickable = true
+                break
             }
         }
     }
@@ -115,6 +121,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     override fun showAnswer(value: String, index: Int) {
         answerButtons[index].text = value
+        answerButtons[index].background = ContextCompat.getDrawable(this, R.drawable.bg_answer)
         answerButtons[index].isClickable = true
     }
 
@@ -136,10 +143,12 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         for (i in answer.indices) {
             answerButtons[i].visibility = View.VISIBLE
             answerButtons[i].text = ""
+            answerButtons[i].background =
+                ContextCompat.getDrawable(this, R.drawable.bg_answer_empty)
             answerButtons[i].isClickable = false
         }
 
-        for (i in answer.length until answerButtons.size){
+        for (i in answer.length until answerButtons.size) {
             answerButtons[i].visibility = View.GONE
             answerButtons[i].text = ""
         }
@@ -148,6 +157,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private fun describeVariant(variant: String) {
         for (i in variant.indices) {
             variantButtons[i].text = variant[i].toString()
+            variantButtons[i].setTextColor(getColor(R.color.white))
             variantButtons[i].isClickable = true
         }
     }
