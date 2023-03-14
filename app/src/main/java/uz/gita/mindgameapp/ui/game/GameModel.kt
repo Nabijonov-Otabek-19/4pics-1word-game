@@ -13,6 +13,14 @@ class GameModel(category: Int) : GameContract.Model {
         list.addAll(repository.getNeedDataByCategory(category))
     }
 
+    override fun getCurrentPos(): Int {
+        return currentPos
+    }
+
+    override fun getTotal(): Int {
+        return MAX_COUNT
+    }
+
     override fun nextQuestionData(): QuestionData {
         return list[currentPos++]
     }

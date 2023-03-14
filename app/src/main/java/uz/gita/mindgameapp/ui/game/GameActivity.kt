@@ -3,6 +3,7 @@ package uz.gita.mindgameapp.ui.game
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
@@ -15,6 +16,7 @@ import uz.gita.mindgameapp.ui.result.ResultActivity
 
 class GameActivity : AppCompatActivity(), GameContract.View {
     lateinit var imgBack: AppCompatImageView
+    lateinit var questionPos: TextView
     private val imageViews = ArrayList<AppCompatImageView>(4)
     private val variantButtons = ArrayList<AppCompatTextView>(12)
     private val answerButtons = ArrayList<AppCompatTextView>(8)
@@ -29,7 +31,13 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         loadViews()
         clickEvent()
         val category = intent.getIntExtra("number", 0)
+        loadTitle(category)
         presenter = GamePresenter(this, category)
+    }
+
+    private fun loadTitle(category: Int) {
+        if (category == 1) title = "Animals"
+        else title = "Foods"
     }
 
     private fun loadViews() {
@@ -38,6 +46,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews.add(findViewById(R.id.imageThree))
         imageViews.add(findViewById(R.id.imageFour))
         imgBack = findViewById(R.id.buttonBack)
+        questionPos = findViewById(R.id.count)
 
         imgBack.setOnClickListener {
             finish()
@@ -108,7 +117,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         Toast.makeText(this, "INCORRECT", Toast.LENGTH_SHORT).show()
     }
 
-    override fun describeQuestionData(data: QuestionData) {
+    override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
+        questionPos.text = "$currentPos/$total"
         imageViews[0].setImageResource(data.image1ResID)
         imageViews[1].setImageResource(data.image2ResID)
         imageViews[2].setImageResource(data.image3ResID)

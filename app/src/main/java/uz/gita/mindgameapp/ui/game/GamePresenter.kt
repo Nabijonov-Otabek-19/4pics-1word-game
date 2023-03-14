@@ -24,7 +24,7 @@ class GamePresenter(
 
     override fun loadNextQuestion() {
         if (model.isLastQuestion()) {
-            view.describeQuestionData(model.nextQuestionData())
+            view.describeQuestionData(model.nextQuestionData(), model.getCurrentPos(), model.getTotal())
 
         } else view.openResultActivity()
     }
