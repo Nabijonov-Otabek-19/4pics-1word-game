@@ -2,9 +2,15 @@ package uz.gita.mindgameapp.ui.game
 
 
 class GamePresenter(
-    private val view: GameContract.View,
+    private val view: GameContract.View, category: Int
 ) : GameContract.Presenter {
-    private val model: GameContract.Model = GameModel()
+
+    private var model: GameModel
+
+    init {
+        model = GameModel(category)
+        loadNextQuestion()
+    }
 
     override fun checkAnswer(userAnswer: String) {
         if (model.checkAnswer(userAnswer))

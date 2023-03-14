@@ -22,6 +22,11 @@ class AppRepository private constructor() {
         loadData()
     }
 
+    fun getNeedDataByCategory(count: Int): ArrayList<QuestionData> {
+        if (count == 1) return list_animals
+        else return list_foods
+    }
+
     private fun loadData() {
         shuffleFoods()
         shuffleAnimals()
@@ -92,32 +97,74 @@ class AppRepository private constructor() {
     }
 
     private fun shuffleAnimals() {
-        list_animals.add(QuestionData(
+        list_animals.add(
+            QuestionData(
                 R.drawable.bear1, R.drawable.bear2, R.drawable.bear3,
-                R.drawable.bear4, "FOAERFKBQWLJ", "BEAR"))
+                R.drawable.bear4, "FOAERFKBQWLJ", "BEAR"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.snake1, R.drawable.snake2, R.drawable.snake3,
-            R.drawable.snake4, "KEQOBSBJNLAE", "SNAKE"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.snake1, R.drawable.snake2, R.drawable.snake3,
+                R.drawable.snake4, "KEQOBSBJNLAE", "SNAKE"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.shark1, R.drawable.shark2, R.drawable.shark3,
-            R.drawable.shark4, "KEHOBSBRNLAE", "SHARK"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.shark1, R.drawable.shark2, R.drawable.shark3,
+                R.drawable.shark4, "KEHOBSBRNLAE", "SHARK"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.owl1, R.drawable.owl2, R.drawable.owl3,
-            R.drawable.owl4, "KEHOBSWRNLAE", "OWL"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.owl1, R.drawable.owl2, R.drawable.owl3,
+                R.drawable.owl4, "KEHOBSWRNLAE", "OWL"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.panda1, R.drawable.panda2, R.drawable.panda3,
-            R.drawable.panda4, "POILANGJNWDA", "PANDA"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.panda1, R.drawable.panda2, R.drawable.panda3,
+                R.drawable.panda4, "POILANGJNWDA", "PANDA"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.monkey1, R.drawable.monkey2, R.drawable.monkey3,
-            R.drawable.monkey4, "KLMSWONRKEYQ", "MONKEY"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.monkey1, R.drawable.monkey2, R.drawable.monkey3,
+                R.drawable.monkey4, "KLMSWONRKEYQ", "MONKEY"
+            )
+        )
 
-        list_animals.add(QuestionData(
-            R.drawable.goose1, R.drawable.goose2, R.drawable.goose3,
-            R.drawable.goose4, "IRTUESGOVQWO", "GOOSE"))
+        list_animals.add(
+            QuestionData(
+                R.drawable.goose1, R.drawable.goose2, R.drawable.goose3,
+                R.drawable.goose4, "IRTUESGOVQWO", "GOOSE"
+            )
+        )
+
+        list_animals.add(
+            QuestionData(
+                R.drawable.camel1, R.drawable.camel2, R.drawable.camel3,
+                R.drawable.camel4, "FIMAXEOLCFDT", "CAMEL"
+            )
+        )
+
+        list_animals.add(
+            QuestionData(
+                R.drawable.rabbit1, R.drawable.rabbit2, R.drawable.rabbit3,
+                R.drawable.rabbit4, "BIAOTLRBGHKJ", "RABBIT"
+            )
+        )
+
+        list_animals.add(
+            QuestionData(
+                R.drawable.eagle1, R.drawable.eagle2, R.drawable.eagle3,
+                R.drawable.eagle4, "QOEGTURLAEVB", "EAGLE"
+            )
+        )
     }
 }

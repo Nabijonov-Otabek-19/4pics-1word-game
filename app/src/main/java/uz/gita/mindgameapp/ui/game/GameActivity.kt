@@ -18,7 +18,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private val imageViews = ArrayList<AppCompatImageView>(4)
     private val variantButtons = ArrayList<AppCompatTextView>(12)
     private val answerButtons = ArrayList<AppCompatTextView>(8)
-    private val presenter: GameContract.Presenter = GamePresenter(this)
+    private lateinit var presenter: GameContract.Presenter
     private lateinit var ans: String
     private var count: Int = 0
 
@@ -28,7 +28,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
         loadViews()
         clickEvent()
-        presenter.loadNextQuestion()
+        val category = intent.getIntExtra("number", 0)
+        presenter = GamePresenter(this, category)
     }
 
     private fun loadViews() {

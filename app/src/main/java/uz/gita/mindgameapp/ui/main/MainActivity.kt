@@ -2,21 +2,46 @@ package uz.gita.mindgameapp.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatButton
-import uz.gita.mindgameapp.R
+import androidx.appcompat.app.AppCompatActivity
+import uz.gita.mindgameapp.databinding.ActivityMainBinding
 import uz.gita.mindgameapp.ui.game.GameActivity
+import uz.gita.mindgameapp.ui.levels.LevelsActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainContract.View {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var presenter: MainPresenter
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        presenter = MainPresenter(this)
+        loadViews()
+    }
 
-        findViewById<AppCompatButton>(R.id.btnStart).setOnClickListener {
-            startActivity(Intent(this, GameActivity::class.java))
+    private fun loadViews() {
+        binding.apply {
+            btnStart.setOnClickListener {
+                presenter.clickRandomButton()
+            }
+
+            btnLevels.setOnClickListener {
+                startActivity(Intent(this@MainActivity, LevelsActivity::class.java))
+            }
+
+            btnQuit.setOnClickListener {
+                finishAffinity()
+            }
         }
+    }
+
+    override fun openGameActivity(category: Int) {
+        val intent = Intent(this, GameActivity::class.java)
+        intent.putExtra("number", category)
+        startActivity(intent)
     }
 }
