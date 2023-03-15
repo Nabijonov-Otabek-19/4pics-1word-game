@@ -30,6 +30,9 @@ class LevelsActivity : AppCompatActivity(), LevelsContract.View {
             btnFoods.setOnClickListener {
                 presenter.clickCategoryButton(2)
             }
+            btnClassroom.setOnClickListener {
+                presenter.clickCategoryButton(3)
+            }
         }
     }
 

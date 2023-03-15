@@ -37,7 +37,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     private fun loadTitle(category: Int) {
         if (category == 1) title = "Animals"
-        else title = "Foods"
+        else if (category == 2) title = "Foods"
+        else title = "Classroom"
     }
 
     private fun loadViews() {
