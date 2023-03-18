@@ -8,6 +8,7 @@ class AppRepository private constructor() {
     val list_animals: ArrayList<QuestionData> = ArrayList()
     val list_foods: ArrayList<QuestionData> = ArrayList()
     val list_classroom: ArrayList<QuestionData> = ArrayList()
+    val list_jobs: ArrayList<QuestionData> = ArrayList()
 
     companion object {
         private lateinit var instance: AppRepository  // ! null
@@ -24,15 +25,19 @@ class AppRepository private constructor() {
     }
 
     fun getNeedDataByCategory(count: Int): ArrayList<QuestionData> {
-        if (count == 1) return list_animals
-        else if (count == 2) return list_foods
-        else return list_classroom
+        return when (count) {
+            1 -> list_animals
+            2 -> list_foods
+            3 -> list_classroom
+            else -> list_jobs
+        }
     }
 
     private fun loadData() {
         shuffleFoods()
         shuffleAnimals()
         shuffleClassroom()
+        shuffleJobs()
     }
 
     private fun shuffleFoods() {
@@ -171,37 +176,72 @@ class AppRepository private constructor() {
         )
     }
 
-    private fun shuffleClassroom(){
-        list_classroom.add(QuestionData(R.drawable.chair1, R.drawable.chair2, R.drawable.chair3,
-        R.drawable.chair4, "GKAIROQGCKHH", "CHAIR")
+    private fun shuffleClassroom() {
+        list_classroom.add(
+            QuestionData(
+                R.drawable.chair1, R.drawable.chair2, R.drawable.chair3,
+                R.drawable.chair4, "GKAIROQGCKHH", "CHAIR"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.eraser1, R.drawable.eraser2, R.drawable.eraser3,
-            R.drawable.eraser4, "EOWQERLAFJSR", "ERASER")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.eraser1, R.drawable.eraser2, R.drawable.eraser3,
+                R.drawable.eraser4, "EOWQERLAFJSR", "ERASER"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.pensil1, R.drawable.pensil2, R.drawable.pensil3,
-            R.drawable.pensil4, "PGITOLENSGJT", "PENSIL")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.pensil1, R.drawable.pensil2, R.drawable.pensil3,
+                R.drawable.pensil4, "PGITOLENSGJT", "PENSIL"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.bag1, R.drawable.bag2, R.drawable.bag3,
-            R.drawable.bag4, "PGITOAENBGJT", "BAG")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.bag1, R.drawable.bag2, R.drawable.bag3,
+                R.drawable.bag4, "PGITOAENBGJT", "BAG"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.desk1, R.drawable.desk2, R.drawable.desk3,
-            R.drawable.desk4, "KGITDAENBGST", "DESK")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.desk1, R.drawable.desk2, R.drawable.desk3,
+                R.drawable.desk4, "KGITDAENBGST", "DESK"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.glue1, R.drawable.glue2, R.drawable.glue3,
-            R.drawable.glue4, "GUEOWLDFHAVB", "GLUE")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.glue1, R.drawable.glue2, R.drawable.glue3,
+                R.drawable.glue4, "GUEOWLDFHAVB", "GLUE"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.book1, R.drawable.book2, R.drawable.book3,
-            R.drawable.book4, "GTIOWKQBOFJA", "BOOK")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.book1, R.drawable.book2, R.drawable.book3,
+                R.drawable.book4, "GTIOWKQBOFJA", "BOOK"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.board1, R.drawable.board2, R.drawable.board3,
-            R.drawable.board4, "DRIOWKQBOFJA", "BOARD")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.board1, R.drawable.board2, R.drawable.board3,
+                R.drawable.board4, "DRIOWKQBOFJA", "BOARD"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.marker1, R.drawable.marker2, R.drawable.marker3,
-            R.drawable.marker4, "KROQRABEMGLA", "MARKER")
+        list_classroom.add(
+            QuestionData(
+                R.drawable.marker1, R.drawable.marker2, R.drawable.marker3,
+                R.drawable.marker4, "KROQRABEMGLA", "MARKER"
+            )
         )
-        list_classroom.add(QuestionData(R.drawable.ruler1, R.drawable.ruler2, R.drawable.ruler3,
-            R.drawable.ruler4, "KREQRABUMGLA", "RULER"))
+        list_classroom.add(
+            QuestionData(
+                R.drawable.ruler1, R.drawable.ruler2, R.drawable.ruler3,
+                R.drawable.ruler4, "KREQRABUMGLA", "RULER"
+            )
+        )
 
         list_classroom.shuffle()
+    }
+
+    private fun shuffleJobs() {
+
     }
 }
