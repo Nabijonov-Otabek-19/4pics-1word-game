@@ -242,6 +242,7 @@ class AppRepository private constructor() {
     }
 
     private fun shuffleJobs() {
-
+        list_jobs.add(QuestionData(R.drawable.builder1, R.drawable.builder2, R.drawable.builder3,
+        R.drawable.builder4, "TOIUEMBKQRDL", "BUILDER"))
     }
 }
