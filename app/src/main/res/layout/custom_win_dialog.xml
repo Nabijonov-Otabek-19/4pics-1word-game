@@ -3,6 +3,7 @@
     android:id="@+id/bottom_sheet_exit_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="16dp"
     android:background="@drawable/card_round"
     android:orientation="vertical">
 

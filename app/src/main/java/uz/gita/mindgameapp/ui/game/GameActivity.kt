@@ -1,6 +1,8 @@
 package uz.gita.mindgameapp.ui.game
 
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -153,6 +155,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     override fun openResultActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.custom_exit_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val btnNo: AppCompatButton = dialog.findViewById(R.id.textViewNo)
         val btnYes: AppCompatButton = dialog.findViewById(R.id.textViewYes)

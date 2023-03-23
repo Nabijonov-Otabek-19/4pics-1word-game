@@ -3,6 +3,7 @@
     android:id="@+id/bottom_sheet_exit_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="16dp"
     android:background="@drawable/card_round"
     android:orientation="vertical">
 
@@ -16,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="00dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
+            android:textColor="@color/white"
             android:text="Do you want to finish game ?"
             android:textSize="20dp"
             android:textStyle="bold" />

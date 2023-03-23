@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.mindgameapp.databinding.ActivityMainBinding
+import uz.gita.mindgameapp.ui.about.AboutActivity
 import uz.gita.mindgameapp.ui.game.GameActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding.apply {
             btnStart.setOnClickListener {
                 presenter.clickRandomButton()
+            }
+
+            btnAbout.setOnClickListener {
+                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
             }
 
             btnQuit.setOnClickListener {

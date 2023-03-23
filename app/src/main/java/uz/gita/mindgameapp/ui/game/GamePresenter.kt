@@ -2,6 +2,8 @@ package uz.gita.mindgameapp.ui.game
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.widget.AppCompatButton
 import uz.gita.mindgameapp.R
 
@@ -19,6 +21,7 @@ class GamePresenter(
     override fun showExitDialog() {
         val dialog = Dialog(view as Context)
         dialog.setContentView(R.layout.custom_exit_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val btnNo: AppCompatButton = dialog.findViewById(R.id.textViewNo)
         val btnYes: AppCompatButton = dialog.findViewById(R.id.textViewYes)
@@ -37,6 +40,8 @@ class GamePresenter(
         if (model.checkAnswer(userAnswer)) {
             val dialog = Dialog(view as Context)
             dialog.setContentView(R.layout.custom_win_dialog)
+            dialog.setCancelable(false)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             val btnNext: AppCompatButton = dialog.findViewById(R.id.textViewNext)
 
