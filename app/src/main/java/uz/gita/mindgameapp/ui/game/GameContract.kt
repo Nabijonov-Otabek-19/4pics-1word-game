@@ -12,6 +12,7 @@ interface GameContract {
     }
 
     interface View {
+        fun setCoin()
         fun closeScreen()
         fun showToast()
         fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int)
@@ -21,7 +22,11 @@ interface GameContract {
     }
 
     interface Presenter {
+        fun getCoin(): Int
+        fun addCoin(coin: Int)
+        fun divideCoin(coin: Int)
         fun showExitDialog()
+        fun showWinDialog()
         fun checkAnswer(userAnswer: String)
         fun loadNextQuestion()
         fun clickVariantButton(value: String)

@@ -24,6 +24,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private val answerButtons = ArrayList<AppCompatTextView>(8)
     private lateinit var presenter: GameContract.Presenter
     private lateinit var quesTitle: AppCompatTextView
+    private lateinit var btnHint: AppCompatImageView
     private lateinit var ans: String
     private var count: Int = 0
 
@@ -34,10 +35,15 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         loadViews()
         clickEvent()
         presenter = GamePresenter(this)
+        setCoin()
     }
 
     override fun onBackPressed() {
         presenter.showExitDialog()
+    }
+
+    override fun setCoin(){
+        countCoins.text = "${presenter.getCoin()}$"
     }
 
     private fun loadViews() {
@@ -48,6 +54,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imgBack = findViewById(R.id.buttonBack)
         countCoins = findViewById(R.id.countCount)
         quesTitle = findViewById(R.id.categoryTitle)
+        btnHint = findViewById(R.id.btn_hint)
 
         val answerLine = findViewById<LinearLayoutCompat>(R.id.answerLine)
         for (i in 0 until answerLine.childCount)
@@ -91,6 +98,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
             }
         }
 
+        btnHint.setOnClickListener {
+            presenter.divideCoin(30)
+        }
+
         imgBack.setOnClickListener {
             presenter.showExitDialog()
         }
@@ -123,7 +134,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
-        countCoins.text = "100$"
+
         imageViews[0].setImageResource(data.image1ResID)
         imageViews[1].setImageResource(data.image2ResID)
         imageViews[2].setImageResource(data.image3ResID)
