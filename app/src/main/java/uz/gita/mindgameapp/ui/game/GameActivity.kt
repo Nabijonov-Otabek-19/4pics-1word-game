@@ -1,11 +1,14 @@
 package uz.gita.mindgameapp.ui.game
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -43,6 +46,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         else title.text = "Jobs"
     }
 
+    override fun onBackPressed() {
+        presenter.showExitDialog()
+    }
+
     private fun loadViews() {
         imageViews.add(findViewById(R.id.imageOne))
         imageViews.add(findViewById(R.id.imageTwo))
@@ -51,10 +58,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imgBack = findViewById(R.id.buttonBack)
         questionPos = findViewById(R.id.count)
         title = findViewById(R.id.categoryTitle)
-
-        imgBack.setOnClickListener {
-            finish()
-        }
 
         val answerLine = findViewById<LinearLayoutCompat>(R.id.answerLine)
         for (i in 0 until answerLine.childCount)
@@ -97,6 +100,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                 view.background = ContextCompat.getDrawable(this, R.drawable.bg_answer_empty)
             }
         }
+
+        imgBack.setOnClickListener {
+            presenter.showExitDialog()
+        }
     }
 
     private fun returnAnswer(st: String) {
@@ -115,6 +122,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
             str += answerButtons[i].text
 
         return str
+    }
+
+    override fun closeScreen() {
+        finish()
     }
 
     override fun showToast() {
@@ -150,8 +161,20 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun openResultActivity() {
-        startActivity(Intent(this, ResultActivity::class.java))
-        finish()
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.custom_exit_dialog)
+
+        val btnNo: AppCompatButton = dialog.findViewById(R.id.textViewNo)
+        val btnYes: AppCompatButton = dialog.findViewById(R.id.textViewYes)
+
+        btnNo.setOnClickListener { dialog.dismiss() }
+
+        btnYes.setOnClickListener {
+            dialog.dismiss()
+            this.finish()
+        }
+        dialog.create()
+        dialog.show()
     }
 
     private fun resizeAnswerButtons(answer: String) {
