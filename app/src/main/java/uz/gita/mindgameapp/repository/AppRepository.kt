@@ -244,5 +244,34 @@ class AppRepository private constructor() {
     private fun shuffleJobs() {
         list_jobs.add(QuestionData(R.drawable.builder1, R.drawable.builder2, R.drawable.builder3,
         R.drawable.builder4, "TOIUEMBKQRDL", "BUILDER"))
+
+        list_jobs.add(QuestionData(R.drawable.butcher1, R.drawable.butcher2, R.drawable.butcher3,
+            R.drawable.butcher4, "OUTWELRCHBAK", "BUTCHER"))
+
+        list_jobs.add(QuestionData(R.drawable.teacher1, R.drawable.teacher2, R.drawable.teacher3,
+            R.drawable.teacher4, "TOECHLWQAKRE", "TEACHER"))
+
+        list_jobs.add(QuestionData(R.drawable.artist1, R.drawable.artist2, R.drawable.artist3,
+            R.drawable.artist4, "TOJTVIRKSAMZ", "ARTIST"))
+
+        list_jobs.add(QuestionData(R.drawable.miner1, R.drawable.miner2, R.drawable.miner3,
+            R.drawable.miner4, "ORMEIQADNGJD", "MINER"))
+
+        list_jobs.add(QuestionData(R.drawable.doctor1, R.drawable.doctor2, R.drawable.doctor3,
+            R.drawable.doctor4, "OKCTRLQDDOCG", "DOCTOR"))
+
+        list_jobs.add(QuestionData(R.drawable.pilot1, R.drawable.pilot2, R.drawable.pilot3,
+            R.drawable.pilot4, "OTKVLMAIEPSD", "PILOT"))
+
+        list_jobs.add(QuestionData(R.drawable.farmer1, R.drawable.farmer2, R.drawable.farmer3,
+            R.drawable.farmer4, "FOREMQASJDKR", "FARMER"))
+
+        list_jobs.add(QuestionData(R.drawable.actor1, R.drawable.actor2, R.drawable.actor3,
+            R.drawable.actor4, "ORTVKDACFHEW", "ACTOR"))
+
+        list_jobs.add(QuestionData(R.drawable.barber1, R.drawable.barber2, R.drawable.barber3,
+            R.drawable.barber4, "OERMBABKRQLF", "BARBER"))
+
+        list_jobs.shuffle()
     }
 }

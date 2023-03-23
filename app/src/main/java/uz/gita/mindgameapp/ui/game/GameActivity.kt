@@ -21,6 +21,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private val variantButtons = ArrayList<AppCompatTextView>(12)
     private val answerButtons = ArrayList<AppCompatTextView>(8)
     private lateinit var presenter: GameContract.Presenter
+    private lateinit var title: AppCompatTextView
     private lateinit var ans: String
     private var count: Int = 0
 
@@ -36,9 +37,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     private fun loadTitle(category: Int) {
-        if (category == 1) title = "Animals"
-        else if (category == 2) title = "Foods"
-        else title = "Classroom"
+        if (category == 1) title.text = "Animals"
+        else if (category == 2) title.text = "Foods"
+        else if (category == 3) title.text = "Classroom"
+        else title.text = "Jobs"
     }
 
     private fun loadViews() {
@@ -48,6 +50,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews.add(findViewById(R.id.imageFour))
         imgBack = findViewById(R.id.buttonBack)
         questionPos = findViewById(R.id.count)
+        title = findViewById(R.id.categoryTitle)
 
         imgBack.setOnClickListener {
             finish()
@@ -84,14 +87,14 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         }
 
         answerButtons.forEach {
-            it.setOnClickListener {
-                val st = (it as AppCompatTextView).text
+            it.setOnClickListener { view ->
+                val st = (view as AppCompatTextView).text
                 returnAnswer(st.toString())
 
                 count--
-                it.text = ""
-                it.isClickable = false
-                it.background = ContextCompat.getDrawable(this, R.drawable.bg_answer_empty)
+                view.text = ""
+                view.isClickable = false
+                view.background = ContextCompat.getDrawable(this, R.drawable.bg_answer_empty)
             }
         }
     }

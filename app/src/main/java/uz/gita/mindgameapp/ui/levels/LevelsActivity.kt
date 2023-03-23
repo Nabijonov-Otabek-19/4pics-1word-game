@@ -1,11 +1,9 @@
 package uz.gita.mindgameapp.ui.levels
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import uz.gita.mindgameapp.R
+import androidx.appcompat.app.AppCompatActivity
 import uz.gita.mindgameapp.databinding.ActivityLevelsBinding
-import uz.gita.mindgameapp.databinding.ActivityMainBinding
 import uz.gita.mindgameapp.ui.game.GameActivity
 
 class LevelsActivity : AppCompatActivity(), LevelsContract.View {
@@ -32,6 +30,9 @@ class LevelsActivity : AppCompatActivity(), LevelsContract.View {
             }
             btnClassroom.setOnClickListener {
                 presenter.clickCategoryButton(3)
+            }
+            btnJobs.setOnClickListener {
+                presenter.clickCategoryButton(4)
             }
         }
     }
