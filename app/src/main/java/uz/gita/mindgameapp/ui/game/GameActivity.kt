@@ -18,7 +18,7 @@ import uz.gita.mindgameapp.model.QuestionData
 
 class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var imgBack: AppCompatImageView
-    private lateinit var questionPos: TextView
+    private lateinit var countCoins: TextView
     private val imageViews = ArrayList<AppCompatImageView>(4)
     private val variantButtons = ArrayList<AppCompatTextView>(12)
     private val answerButtons = ArrayList<AppCompatTextView>(8)
@@ -46,7 +46,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews.add(findViewById(R.id.imageThree))
         imageViews.add(findViewById(R.id.imageFour))
         imgBack = findViewById(R.id.buttonBack)
-        questionPos = findViewById(R.id.count)
+        countCoins = findViewById(R.id.countCount)
         quesTitle = findViewById(R.id.categoryTitle)
 
         val answerLine = findViewById<LinearLayoutCompat>(R.id.answerLine)
@@ -123,7 +123,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
-        questionPos.text = "$currentPos"
+        countCoins.text = "100$"
         imageViews[0].setImageResource(data.image1ResID)
         imageViews[1].setImageResource(data.image2ResID)
         imageViews[2].setImageResource(data.image3ResID)
