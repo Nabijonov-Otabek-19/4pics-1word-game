@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.mindgameapp.databinding.ActivityMainBinding
 import uz.gita.mindgameapp.ui.game.GameActivity
-import uz.gita.mindgameapp.ui.levels.LevelsActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 
@@ -29,19 +28,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 presenter.clickRandomButton()
             }
 
-            btnLevels.setOnClickListener {
-                startActivity(Intent(this@MainActivity, LevelsActivity::class.java))
-            }
-
             btnQuit.setOnClickListener {
                 finishAffinity()
             }
         }
     }
 
-    override fun openGameActivity(category: Int) {
+    override fun openGameActivity() {
         val intent = Intent(this, GameActivity::class.java)
-        intent.putExtra("number", category)
         startActivity(intent)
     }
 }

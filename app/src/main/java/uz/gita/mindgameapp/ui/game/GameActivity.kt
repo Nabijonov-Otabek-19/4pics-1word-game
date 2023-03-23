@@ -1,8 +1,6 @@
 package uz.gita.mindgameapp.ui.game
 
 import android.app.Dialog
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -15,16 +13,15 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import uz.gita.mindgameapp.R
 import uz.gita.mindgameapp.model.QuestionData
-import uz.gita.mindgameapp.ui.result.ResultActivity
 
 class GameActivity : AppCompatActivity(), GameContract.View {
-    lateinit var imgBack: AppCompatImageView
-    lateinit var questionPos: TextView
+    private lateinit var imgBack: AppCompatImageView
+    private lateinit var questionPos: TextView
     private val imageViews = ArrayList<AppCompatImageView>(4)
     private val variantButtons = ArrayList<AppCompatTextView>(12)
     private val answerButtons = ArrayList<AppCompatTextView>(8)
     private lateinit var presenter: GameContract.Presenter
-    private lateinit var title: AppCompatTextView
+    private lateinit var quesTitle: AppCompatTextView
     private lateinit var ans: String
     private var count: Int = 0
 
@@ -34,16 +31,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
         loadViews()
         clickEvent()
-        val category = intent.getIntExtra("number", 0)
-        loadTitle(category)
-        presenter = GamePresenter(this, category)
-    }
-
-    private fun loadTitle(category: Int) {
-        if (category == 1) title.text = "Animals"
-        else if (category == 2) title.text = "Foods"
-        else if (category == 3) title.text = "Classroom"
-        else title.text = "Jobs"
+        presenter = GamePresenter(this)
     }
 
     override fun onBackPressed() {
@@ -57,7 +45,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews.add(findViewById(R.id.imageFour))
         imgBack = findViewById(R.id.buttonBack)
         questionPos = findViewById(R.id.count)
-        title = findViewById(R.id.categoryTitle)
+        quesTitle = findViewById(R.id.categoryTitle)
 
         val answerLine = findViewById<LinearLayoutCompat>(R.id.answerLine)
         for (i in 0 until answerLine.childCount)
@@ -133,11 +121,13 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
-        questionPos.text = "$currentPos/$total"
+        questionPos.text = "$currentPos"
         imageViews[0].setImageResource(data.image1ResID)
         imageViews[1].setImageResource(data.image2ResID)
         imageViews[2].setImageResource(data.image3ResID)
         imageViews[3].setImageResource(data.image4ResID)
+
+        quesTitle.text = data.category
 
         ans = data.answer
         count = 0

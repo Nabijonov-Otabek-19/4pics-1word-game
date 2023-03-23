@@ -7,13 +7,12 @@ import uz.gita.mindgameapp.R
 
 
 class GamePresenter(
-    private val view: GameContract.View, category: Int
+    private val view: GameContract.View
 ) : GameContract.Presenter {
 
-    private var model: GameModel
+    private var model: GameModel = GameModel()
 
     init {
-        model = GameModel(category)
         loadNextQuestion()
     }
 
@@ -35,9 +34,20 @@ class GamePresenter(
     }
 
     override fun checkAnswer(userAnswer: String) {
-        if (model.checkAnswer(userAnswer))
-            loadNextQuestion()
-        else showInfo()
+        if (model.checkAnswer(userAnswer)) {
+            val dialog = Dialog(view as Context)
+            dialog.setContentView(R.layout.custom_win_dialog)
+
+            val btnNext: AppCompatButton = dialog.findViewById(R.id.textViewNext)
+
+            btnNext.setOnClickListener {
+                dialog.dismiss()
+                loadNextQuestion()
+            }
+            dialog.create()
+            dialog.show()
+
+        } else showInfo()
     }
 
     private fun showInfo() {
@@ -46,7 +56,11 @@ class GamePresenter(
 
     override fun loadNextQuestion() {
         if (model.isLastQuestion()) {
-            view.describeQuestionData(model.nextQuestionData(), model.getCurrentPos(), model.getTotal())
+            view.describeQuestionData(
+                model.nextQuestionData(),
+                model.getCurrentPos(),
+                model.getTotal()
+            )
 
         } else view.openResultActivity()
     }

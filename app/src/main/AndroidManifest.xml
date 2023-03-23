@@ -17,10 +17,6 @@
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.levels.LevelsActivity"
-            android:exported="false" />
-        <activity
-            android:screenOrientation="portrait"
             android:name=".ui.result.ResultActivity"
             android:exported="false" />
         <activity
