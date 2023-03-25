@@ -12,6 +12,7 @@ interface GameContract {
     }
 
     interface View {
+        fun showHint()
         fun setCoin()
         fun closeScreen()
         fun showToast()
@@ -22,6 +23,7 @@ interface GameContract {
     }
 
     interface Presenter {
+        fun hint(coin: Int)
         fun getCoin(): Int
         fun addCoin(coin: Int)
         fun divideCoin(coin: Int)

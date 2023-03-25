@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatButton
 import uz.gita.mindgameapp.R
 import uz.gita.mindgameapp.db.MyBase
 
-
 class GamePresenter(
     private val view: GameContract.View
 ) : GameContract.Presenter {
@@ -21,6 +20,17 @@ class GamePresenter(
         loadNextQuestion()
     }
 
+    override fun hint(coin: Int) {
+        if (getCoin() >= 30) {
+            view.showHint()
+            divideCoin(coin)
+
+        } else {
+            Toast.makeText(view as Context, "You don't have enough money", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
     override fun getCoin(): Int = myBase.coin
 
     override fun addCoin(coin: Int) {
@@ -29,13 +39,8 @@ class GamePresenter(
     }
 
     override fun divideCoin(coin: Int) {
-        if (coin <= myBase.coin) {
-            myBase.coin -= coin
-            view.setCoin()
-        } else {
-            Toast.makeText(view as Context, "You don't have enough money", Toast.LENGTH_SHORT)
-                .show()
-        }
+        myBase.coin -= coin
+        view.setCoin()
     }
 
     override fun showExitDialog() {

@@ -27,6 +27,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var btnHint: AppCompatImageView
     private lateinit var ans: String
     private var count: Int = 0
+    private val COIN: Int = 30
+    private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +44,27 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         presenter.showExitDialog()
     }
 
-    override fun setCoin(){
+    override fun showHint() {
+        for (i in variantButtons.indices) {
+            if (variantButtons[i].text.toString() == ans[index].toString()) {
+                if (ans.length > count) {
+                    val st = variantButtons[i].text
+                    count++
+                    variantButtons[i].isClickable = false
+                    variantButtons[i].setTextColor(getColor(R.color.gray))
+                    presenter.clickVariantButton(st.toString())
+                    index++
+
+                    if (ans.length == count) {
+                        presenter.checkAnswer(checkAnswer())
+                    }
+                    return
+                }
+            }
+        }
+    }
+
+    override fun setCoin() {
         countCoins.text = "${presenter.getCoin()}$"
     }
 
@@ -91,6 +113,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                 val st = (view as AppCompatTextView).text
                 returnAnswer(st.toString())
 
+                index--
                 count--
                 view.text = ""
                 view.isClickable = false
@@ -99,7 +122,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         }
 
         btnHint.setOnClickListener {
-            presenter.divideCoin(30)
+            presenter.hint(COIN)
         }
 
         imgBack.setOnClickListener {
@@ -134,16 +157,15 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
-
         imageViews[0].setImageResource(data.image1ResID)
         imageViews[1].setImageResource(data.image2ResID)
         imageViews[2].setImageResource(data.image3ResID)
         imageViews[3].setImageResource(data.image4ResID)
 
         quesTitle.text = data.category
-
         ans = data.answer
         count = 0
+        index = 0
         resizeAnswerButtons(data.answer)
         describeVariant(data.variant)
     }
@@ -165,15 +187,14 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     override fun openResultActivity() {
         val dialog = Dialog(this)
-        dialog.setContentView(R.layout.custom_exit_dialog)
+        dialog.setContentView(R.layout.custom_finish_dialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        val btnNo: AppCompatButton = dialog.findViewById(R.id.textViewNo)
-        val btnYes: AppCompatButton = dialog.findViewById(R.id.textViewYes)
+        val btnFinish: AppCompatButton = dialog.findViewById(R.id.textViewFinish)
+        val txtTotal: TextView = dialog.findViewById(R.id.txt_TotalCoins)
+        txtTotal.text = "Your total coin is ${presenter.getCoin()}"
 
-        btnNo.setOnClickListener { dialog.dismiss() }
-
-        btnYes.setOnClickListener {
+        btnFinish.setOnClickListener {
             dialog.dismiss()
             this.finish()
         }
