@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +27,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var presenter: GameContract.Presenter
     private lateinit var quesTitle: AppCompatTextView
     private lateinit var btnHint: AppCompatImageView
+    private lateinit var answerLine: LinearLayoutCompat
+    private lateinit var animation: Animation
     private lateinit var ans: String
     private var count: Int = 0
     private val COIN: Int = 30
@@ -42,6 +46,11 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     override fun onBackPressed() {
         presenter.showExitDialog()
+    }
+
+    override fun wrongAnsAnimation() {
+        animation = AnimationUtils.loadAnimation(this, R.anim.animation_shake)
+        answerLine.startAnimation(animation)
     }
 
     override fun showHint() {
@@ -78,7 +87,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         quesTitle = findViewById(R.id.categoryTitle)
         btnHint = findViewById(R.id.btn_hint)
 
-        val answerLine = findViewById<LinearLayoutCompat>(R.id.answerLine)
+        answerLine = findViewById(R.id.answerLine)
         for (i in 0 until answerLine.childCount)
             answerButtons.add(answerLine.getChildAt(i) as AppCompatTextView)
 

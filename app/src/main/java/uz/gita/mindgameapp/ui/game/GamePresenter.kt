@@ -82,7 +82,7 @@ class GamePresenter(
         if (model.checkAnswer(userAnswer)) {
             showWinDialog()
 
-        } else showInfo()
+        } else view.wrongAnsAnimation()
     }
 
     private fun showInfo() {

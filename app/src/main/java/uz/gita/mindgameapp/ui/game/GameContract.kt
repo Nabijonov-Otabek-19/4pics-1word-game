@@ -12,6 +12,7 @@ interface GameContract {
     }
 
     interface View {
+        fun wrongAnsAnimation()
         fun showHint()
         fun setCoin()
         fun closeScreen()
