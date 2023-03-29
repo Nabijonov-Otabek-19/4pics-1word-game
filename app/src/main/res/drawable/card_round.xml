@@ -4,9 +4,9 @@
 
     <corners android:radius="8dp" />
     <gradient
-        android:angle="-90"
-        android:endColor="#15327F"
-        android:startColor="#24B3AA" />
+        android:angle="-45"
+        android:endColor="@color/pink"
+        android:startColor="#59AAD6" />
 
     <padding
         android:bottom="8dp"

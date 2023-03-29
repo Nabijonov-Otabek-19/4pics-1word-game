@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import uz.gita.mindgameapp.R
 import uz.gita.mindgameapp.db.MyBase
+import uz.gita.mindgameapp.utils.Constants
 
 class GamePresenter(
     private val view: GameContract.View
@@ -21,7 +22,7 @@ class GamePresenter(
     }
 
     override fun hint(coin: Int) {
-        if (getCoin() >= 30) {
+        if (getCoin() >= coin) {
             view.showHint()
             divideCoin(coin)
 
@@ -72,7 +73,7 @@ class GamePresenter(
         btnNext.setOnClickListener {
             dialog.dismiss()
             loadNextQuestion()
-            addCoin(20)
+            addCoin(Constants.WIN_COIN)
         }
         dialog.create()
         dialog.show()
@@ -82,7 +83,10 @@ class GamePresenter(
         if (model.checkAnswer(userAnswer)) {
             showWinDialog()
 
-        } else view.wrongAnsAnimation()
+        } else {
+            view.wrongAnsAnimation()
+            showInfo()
+        }
     }
 
     private fun showInfo() {

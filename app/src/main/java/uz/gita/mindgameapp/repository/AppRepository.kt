@@ -8,7 +8,7 @@ class AppRepository private constructor() {
     private val list_question: ArrayList<QuestionData> = ArrayList()
 
     companion object {
-        private lateinit var instance: AppRepository  // ! null
+        private lateinit var instance: AppRepository
 
         fun getInstance(): AppRepository {
             if (!(Companion::instance.isInitialized))

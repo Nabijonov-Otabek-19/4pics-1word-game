@@ -17,6 +17,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import uz.gita.mindgameapp.R
 import uz.gita.mindgameapp.model.QuestionData
+import uz.gita.mindgameapp.utils.Constants
 
 class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var imgBack: AppCompatImageView
@@ -31,8 +32,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var animation: Animation
     private lateinit var ans: String
     private var count: Int = 0
-    private val COIN: Int = 30
-    private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +53,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun showHint() {
+        val index = getFirstEmptyPos()
         for (i in variantButtons.indices) {
             if (variantButtons[i].text.toString() == ans[index].toString()) {
                 if (ans.length > count) {
@@ -62,7 +62,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                     variantButtons[i].isClickable = false
                     variantButtons[i].setTextColor(getColor(R.color.gray))
                     presenter.clickVariantButton(st.toString())
-                    index++
 
                     if (ans.length == count) {
                         presenter.checkAnswer(checkAnswer())
@@ -122,7 +121,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                 val st = (view as AppCompatTextView).text
                 returnAnswer(st.toString())
 
-                index--
                 count--
                 view.text = ""
                 view.isClickable = false
@@ -131,7 +129,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         }
 
         btnHint.setOnClickListener {
-            presenter.hint(COIN)
+            presenter.hint(Constants.HINT_COIN)
         }
 
         imgBack.setOnClickListener {
@@ -162,7 +160,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun showToast() {
-        Toast.makeText(this, "INCORRECT", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "WRONG", Toast.LENGTH_SHORT).show()
     }
 
     override fun describeQuestionData(data: QuestionData, currentPos: Int, total: Int) {
@@ -174,7 +172,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         quesTitle.text = data.category
         ans = data.answer
         count = 0
-        index = 0
         resizeAnswerButtons(data.answer)
         describeVariant(data.variant)
     }

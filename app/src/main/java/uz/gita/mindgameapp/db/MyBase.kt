@@ -2,6 +2,7 @@ package uz.gita.mindgameapp.db
 
 import android.content.Context
 import android.content.SharedPreferences
+import uz.gita.mindgameapp.utils.Constants
 
 class MyBase private constructor() {
 
@@ -25,6 +26,6 @@ class MyBase private constructor() {
     }
 
     var coin: Int
-        get() = pref.getInt(COIN, 50)
+        get() = pref.getInt(COIN, Constants.DEFAULT_COIN)
         set(value) = editor.putInt(COIN, value).apply()
 }
