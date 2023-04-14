@@ -30,6 +30,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     private lateinit var btnHint: AppCompatImageView
     private lateinit var answerLine: LinearLayoutCompat
     private lateinit var animation: Animation
+
     private lateinit var ans: String
     private var count: Int = 0
 
@@ -55,6 +56,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     override fun showHint() {
         val index = getFirstEmptyPos()
         for (i in variantButtons.indices) {
+            // ans D O C T O R
             if (variantButtons[i].text.toString() == ans[index].toString()) {
                 if (ans.length > count) {
                     val st = variantButtons[i].text
@@ -81,6 +83,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         imageViews.add(findViewById(R.id.imageTwo))
         imageViews.add(findViewById(R.id.imageThree))
         imageViews.add(findViewById(R.id.imageFour))
+
         imgBack = findViewById(R.id.buttonBack)
         countCoins = findViewById(R.id.countCount)
         quesTitle = findViewById(R.id.categoryTitle)
@@ -219,7 +222,6 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
         for (i in answer.length until answerButtons.size) {
             answerButtons[i].visibility = View.GONE
-            answerButtons[i].text = ""
         }
     }
 

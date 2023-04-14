@@ -6,8 +6,6 @@ data class QuestionData(
     val image2ResID: Int,
     val image3ResID: Int,
     val image4ResID: Int,
-    val variant: String,  // 16
-    val answer: String   // 8
+    val variant: String,  // 12
+    val answer: String   // 3 -> 7
 )
-
-

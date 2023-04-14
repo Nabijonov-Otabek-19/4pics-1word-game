@@ -13,17 +13,11 @@ class GameModel : GameContract.Model {
         list.addAll(repository.getNeedDataByCategory())
     }
 
-    override fun getCurrentPos(): Int {
-        return currentPos
-    }
+    override fun getCurrentPos() = currentPos
 
-    override fun getTotal(): Int {
-        return MAX_COUNT
-    }
+    override fun getTotal() = MAX_COUNT
 
-    override fun nextQuestionData(): QuestionData {
-        return list[currentPos++]
-    }
+    override fun nextQuestionData() = list[currentPos++]
 
     override fun isLastQuestion(): Boolean {
         return currentPos < MAX_COUNT
@@ -33,4 +27,3 @@ class GameModel : GameContract.Model {
         return userAnswer == list[currentPos - 1].answer
     }
 }
-

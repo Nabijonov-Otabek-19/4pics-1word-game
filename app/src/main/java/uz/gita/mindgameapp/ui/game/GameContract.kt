@@ -3,6 +3,7 @@ package uz.gita.mindgameapp.ui.game
 import uz.gita.mindgameapp.model.QuestionData
 
 interface GameContract {
+
     interface Model {
         fun getCurrentPos(): Int
         fun getTotal(): Int
